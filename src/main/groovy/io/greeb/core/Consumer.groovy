@@ -6,14 +6,14 @@ import io.greeb.core.dsl.DataSourceSpec
 
 trait Consumer {
 
-    public abstract String name()
+  public abstract String name()
 
-    public abstract String author()
+  public abstract String author()
 
-    public abstract void configure(@DelegatesTo(value = DataSourceSpec.class) Closure configuration)
+  public abstract void configure(@DelegatesTo(value = DataSourceSpec.class) Closure configuration)
 
-    public abstract void consume(PublicMessage publicMessage)
+  public abstract void consume(PublicMessage publicMessage)
 
-    public abstract void consume(PrivateMessage privateMessage)
+  public abstract void consume(PrivateMessage privateMessage)
 
 }

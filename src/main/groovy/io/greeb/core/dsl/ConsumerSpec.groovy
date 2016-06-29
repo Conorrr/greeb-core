@@ -6,9 +6,9 @@ import io.greeb.core.Consumer
 
 public class ConsumerSpec {
 
-    Multimap<Class<Consumer>, Map<String, String>> consumers = ArrayListMultimap.create()
+  Multimap<Class<Consumer>, Map<String, Map>> consumers = ArrayListMultimap.create()
 
-    public void add(Class<Consumer> klass, Map properties = [:]) {
-        consumers.put(klass, properties)
-    }
+  public void add(Class<Consumer> klass, Map<String, Map> properties = [:]) {
+    consumers.put(klass, properties)
+  }
 }
