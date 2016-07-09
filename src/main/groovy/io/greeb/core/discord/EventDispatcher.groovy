@@ -6,14 +6,14 @@ import sx.blah.discord.handle.impl.events.MessageReceivedEvent
 
 class EventDispatcher implements IListener<Event> {
 
-  List registered = []
+  def registered = [1,2,3]
 
   /**
    * This is where events come in
    */
   @Override
   void handle(Event event) {
-    println event.class
+    registered.findAll({it})
   }
 
   void register(Class<Event> event, Closure closure) {
