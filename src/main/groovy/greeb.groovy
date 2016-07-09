@@ -1,5 +1,4 @@
 import io.greeb.core.SomeGuiceModule
-import sx.blah.discord.handle.impl.events.AudioPlayEvent
 
 import static io.greeb.core.dsl.DSL.greeb
 
@@ -14,22 +13,22 @@ greeb {
 
   consumers {
     // matches message pattern in any channel
-    listen("some pattern") { injected ->
+    messageReceived("some pattern") { injected ->
 
     }
 
     // matches message patterns in specific channel
-    listen("some pattern", "some channel") {
+    messageReceived("some pattern", "some channel") {
 
     }
 
     // matches all patterns
-    listen("*") {
+    messageReceived("*") {
 
     }
 
     // triggers after specific event
-    listen(AudioPlayEvent) {
+    audioPlay {
 
     }
 
