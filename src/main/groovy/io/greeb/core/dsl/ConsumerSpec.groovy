@@ -13,214 +13,194 @@ public class ConsumerSpec {
   }
 
   // matchers with patterns
-
-  public void listen(String pattern, @DelegatesTo(MessageReceivedEventContext) Closure<?> eventClosure) {
+  public void messageReceived(String pattern, @DelegatesTo(MessageReceivedEventContext) Closure<?> eventClosure) {
     eventDispatcher.register(MessageReceivedEvent, pattern, eventClosure)
   }
 
-  public void listen(String pattern, String channel,
-                     @DelegatesTo(MessageReceivedEventContext) Closure<?> eventClosure) {
+  public void messageReceived(String pattern, String channel,
+                              @DelegatesTo(MessageReceivedEventContext) Closure<?> eventClosure) {
     eventDispatcher.register(MessageReceivedEvent, pattern, channel, eventClosure)
   }
 
   // specific event matchers
-
-  public void listen(Class<AudioPlayEvent> event, @DelegatesTo(AudioPlayEventContext) Closure<?> eventClosure) {
-    eventDispatcher.register(event, eventClosure)
+  public void audioPlay(@DelegatesTo(AudioPlayEventContext) Closure<?> eventClosure) {
+    eventDispatcher.register(AudioPlayEvent, eventClosure)
   }
 
-  public void listen(Class<AudioQueuedEvent> event, @DelegatesTo(AudioQueuedEventContext) Closure<?> eventClosure) {
-    eventDispatcher.register(event, eventClosure)
+  public void audioQueued(@DelegatesTo(AudioQueuedEventContext) Closure<?> eventClosure) {
+    eventDispatcher.register(AudioQueuedEvent, eventClosure)
   }
 
-  public void listen(Class<AudioReceiveEvent> event, @DelegatesTo(AudioReceiveEventContext) Closure<?> eventClosure) {
-    eventDispatcher.register(event, eventClosure)
+  public void audioReceive(@DelegatesTo(AudioReceiveEventContext) Closure<?> eventClosure) {
+    eventDispatcher.register(AudioReceiveEvent, eventClosure)
   }
 
-  public void listen(Class<AudioStopEvent> event, @DelegatesTo(AudioStopEventContext) Closure<?> eventClosure) {
-    eventDispatcher.register(event, eventClosure)
+  public void audioStop(@DelegatesTo(AudioStopEventContext) Closure<?> eventClosure) {
+    eventDispatcher.register(AudioStopEvent, eventClosure)
   }
 
-  public void listen(Class<AudioUnqueuedEvent> event, @DelegatesTo(AudioUnqueuedEventContext) Closure<?> eventClosure) {
-    eventDispatcher.register(event, eventClosure)
+  public void audioUnqueued(@DelegatesTo(AudioUnqueuedEventContext) Closure<?> eventClosure) {
+    eventDispatcher.register(AudioUnqueuedEvent, eventClosure)
   }
 
-  public void listen(Class<ChannelCreateEvent> event, @DelegatesTo(ChannelCreateEventContext) Closure<?> eventClosure) {
-    eventDispatcher.register(event, eventClosure)
+  public void channelCreate(@DelegatesTo(ChannelCreateEventContext) Closure<?> eventClosure) {
+    eventDispatcher.register(ChannelCreateEvent, eventClosure)
   }
 
-  public void listen(Class<ChannelDeleteEvent> event, @DelegatesTo(ChannelDeleteEventContext) Closure<?> eventClosure) {
-    eventDispatcher.register(event, eventClosure)
+  public void channelDelete(@DelegatesTo(ChannelDeleteEventContext) Closure<?> eventClosure) {
+    eventDispatcher.register(ChannelDeleteEvent, eventClosure)
   }
 
-  public void listen(Class<ChannelUpdateEvent> event, @DelegatesTo(ChannelUpdateEventContext) Closure<?> eventClosure) {
-    eventDispatcher.register(event, eventClosure)
+  public void channelUpdate(@DelegatesTo(ChannelUpdateEventContext) Closure<?> eventClosure) {
+    eventDispatcher.register(ChannelUpdateEvent, eventClosure)
   }
 
-  public void listen(Class<DiscordDisconnectedEvent> event,
-                     @DelegatesTo(DiscordDisconnectedEventContext) Closure<?> eventClosure) {
-    eventDispatcher.register(event, eventClosure)
+  public void discordDisconnected(@DelegatesTo(DiscordDisconnectedEventContext) Closure<?> eventClosure) {
+    eventDispatcher.register(DiscordDisconnectedEvent, eventClosure)
   }
 
-  public void listen(Class<GameChangeEvent> event, @DelegatesTo(GameChangeEventContext) Closure<?> eventClosure) {
-    eventDispatcher.register(event, eventClosure)
+  public void gameChange(@DelegatesTo(GameChangeEventContext) Closure<?> eventClosure) {
+    eventDispatcher.register(GameChangeEvent, eventClosure)
   }
 
-  public void listen(Class<GuildCreateEvent> event, @DelegatesTo(GuildCreateEventContext) Closure<?> eventClosure) {
-    eventDispatcher.register(event, eventClosure)
+  public void guildCreate(@DelegatesTo(GuildCreateEventContext) Closure<?> eventClosure) {
+    eventDispatcher.register(GuildCreateEvent, eventClosure)
   }
 
-  public void listen(Class<GuildLeaveEvent> event, @DelegatesTo(GuildLeaveEventContext) Closure<?> eventClosure) {
-    eventDispatcher.register(event, eventClosure)
+  public void guildLeave(@DelegatesTo(GuildLeaveEventContext) Closure<?> eventClosure) {
+    eventDispatcher.register(GuildLeaveEvent, eventClosure)
   }
 
-  public void listen(Class<GuildTransferOwnershipEvent> event,
-                     @DelegatesTo(GuildTransferOwnershipEventContext) Closure<?> eventClosure) {
-    eventDispatcher.register(event, eventClosure)
+  public void guildTransferOwnership(@DelegatesTo(GuildTransferOwnershipEventContext) Closure<?> eventClosure) {
+    eventDispatcher.register(GuildTransferOwnershipEvent, eventClosure)
   }
 
-  public void listen(Class<GuildUnavailableEvent> event,
-                     @DelegatesTo(GuildUnavailableEventContext) Closure<?> eventClosure) {
-    eventDispatcher.register(event, eventClosure)
+  public void guildUnavailable(@DelegatesTo(GuildUnavailableEventContext) Closure<?> eventClosure) {
+    eventDispatcher.register(GuildUnavailableEvent, eventClosure)
   }
 
-  public void listen(Class<GuildUpdateEvent> event, @DelegatesTo(GuildUpdateEventContext) Closure<?> eventClosure) {
-    eventDispatcher.register(event, eventClosure)
+  public void guildUpdate(@DelegatesTo(GuildUpdateEventContext) Closure<?> eventClosure) {
+    eventDispatcher.register(GuildUpdateEvent, eventClosure)
   }
 
-  public void listen(Class<InviteReceivedEvent> event,
-                     @DelegatesTo(InviteReceivedEventContext) Closure<?> eventClosure) {
-    eventDispatcher.register(event, eventClosure)
+  public void inviteReceived(@DelegatesTo(InviteReceivedEventContext) Closure<?> eventClosure) {
+    eventDispatcher.register(InviteReceivedEvent, eventClosure)
   }
 
-  public void listen(Class<MentionEvent> event, @DelegatesTo(MentionEventContext) Closure<?> eventClosure) {
-    eventDispatcher.register(event, eventClosure)
+  public void mention(@DelegatesTo(MentionEventContext) Closure<?> eventClosure) {
+    eventDispatcher.register(MentionEvent, eventClosure)
   }
 
-  public void listen(Class<MessageDeleteEvent> event, @DelegatesTo(MessageDeleteEventContext) Closure<?> eventClosure) {
-    eventDispatcher.register(event, eventClosure)
+  public void messageDelete(@DelegatesTo(MessageDeleteEventContext) Closure<?> eventClosure) {
+    eventDispatcher.register(MessageDeleteEvent, eventClosure)
   }
 
-  public void listen(Class<MessageReceivedEvent> event,
-                     @DelegatesTo(MessageReceivedEventContext) Closure<?> eventClosure) {
-    eventDispatcher.register(event, eventClosure)
+  public void messageReceived(@DelegatesTo(MessageReceivedEventContext) Closure<?> eventClosure) {
+    eventDispatcher.register(MessageReceivedEvent, eventClosure)
   }
 
-  public void listen(Class<MessageSendEvent> event, @DelegatesTo(MessageSendEventContext) Closure<?> eventClosure) {
-    eventDispatcher.register(event, eventClosure)
+  public void messageSend(@DelegatesTo(MessageSendEventContext) Closure<?> eventClosure) {
+    eventDispatcher.register(MessageSendEvent, eventClosure)
   }
 
-  public void listen(Class<MessageUpdateEvent> event, @DelegatesTo(MessageUpdateEventContext) Closure<?> eventClosure) {
-    eventDispatcher.register(event, eventClosure)
+  public void messageUpdate(@DelegatesTo(MessageUpdateEventContext) Closure<?> eventClosure) {
+    eventDispatcher.register(MessageUpdateEvent, eventClosure)
   }
 
-  public void listen(Class<ModuleDisabledEvent> event,
-                     @DelegatesTo(ModuleDisabledEventContext) Closure<?> eventClosure) {
-    eventDispatcher.register(event, eventClosure)
+  public void moduleDisabled(@DelegatesTo(ModuleDisabledEventContext) Closure<?> eventClosure) {
+    eventDispatcher.register(ModuleDisabledEvent, eventClosure)
   }
 
-  public void listen(Class<ModuleEnabledEvent> event, @DelegatesTo(ModuleEnabledEventContext) Closure<?> eventClosure) {
-    eventDispatcher.register(event, eventClosure)
+  public void moduleEnabled(@DelegatesTo(ModuleEnabledEventContext) Closure<?> eventClosure) {
+    eventDispatcher.register(ModuleEnabledEvent, eventClosure)
   }
 
-  public void listen(Class<PresenceUpdateEvent> event,
-                     @DelegatesTo(PresenceUpdateEventContext) Closure<?> eventClosure) {
-    eventDispatcher.register(event, eventClosure)
+  public void presenceUpdate(@DelegatesTo(PresenceUpdateEventContext) Closure<?> eventClosure) {
+    eventDispatcher.register(PresenceUpdateEvent, eventClosure)
   }
 
-  public void listen(Class<ReadyEvent> event, @DelegatesTo(ReadyEventContext) Closure<?> eventClosure) {
-    eventDispatcher.register(event, eventClosure)
+  public void ready(@DelegatesTo(ReadyEventContext) Closure<?> eventClosure) {
+    eventDispatcher.register(ReadyEvent, eventClosure)
   }
 
-  public void listen(Class<RoleCreateEvent> event, @DelegatesTo(RoleCreateEventContext) Closure<?> eventClosure) {
-    eventDispatcher.register(event, eventClosure)
+  public void roleCreate(@DelegatesTo(RoleCreateEventContext) Closure<?> eventClosure) {
+    eventDispatcher.register(RoleCreateEvent, eventClosure)
   }
 
-  public void listen(Class<RoleDeleteEvent> event, @DelegatesTo(RoleDeleteEventContext) Closure<?> eventClosure) {
-    eventDispatcher.register(event, eventClosure)
+  public void roleDelete(@DelegatesTo(RoleDeleteEventContext) Closure<?> eventClosure) {
+    eventDispatcher.register(RoleDeleteEvent, eventClosure)
   }
 
-  public void listen(Class<RoleUpdateEvent> event, @DelegatesTo(RoleUpdateEventContext) Closure<?> eventClosure) {
-    eventDispatcher.register(event, eventClosure)
+  public void roleUpdate(@DelegatesTo(RoleUpdateEventContext) Closure<?> eventClosure) {
+    eventDispatcher.register(RoleUpdateEvent, eventClosure)
   }
 
-  public void listen(Class<TypingEvent> event, @DelegatesTo(TypingEventContext) Closure<?> eventClosure) {
-    eventDispatcher.register(event, eventClosure)
+  public void typing(@DelegatesTo(TypingEventContext) Closure<?> eventClosure) {
+    eventDispatcher.register(TypingEvent, eventClosure)
   }
 
-  public void listen(Class<UserBanEvent> event, @DelegatesTo(UserBanEventContext) Closure<?> eventClosure) {
-    eventDispatcher.register(event, eventClosure)
+  public void userBan(@DelegatesTo(UserBanEventContext) Closure<?> eventClosure) {
+    eventDispatcher.register(UserBanEvent, eventClosure)
   }
 
-  public void listen(Class<UserJoinEvent> event, @DelegatesTo(UserJoinEventContext) Closure<?> eventClosure) {
-    eventDispatcher.register(event, eventClosure)
+  public void userJoin(@DelegatesTo(UserJoinEventContext) Closure<?> eventClosure) {
+    eventDispatcher.register(UserJoinEvent, eventClosure)
   }
 
-  public void listen(Class<UserLeaveEvent> event, @DelegatesTo(UserPardonEventContext) Closure<?> eventClosure) {
-    eventDispatcher.register(event, eventClosure)
+  public void userLeave(@DelegatesTo(UserPardonEventContext) Closure<?> eventClosure) {
+    eventDispatcher.register(UserLeaveEvent, eventClosure)
   }
 
-  public void listen(Class<UserPardonEvent> event, @DelegatesTo(UserPardonEventContext) Closure<?> eventClosure) {
-    eventDispatcher.register(event, eventClosure)
+  public void userPardon(@DelegatesTo(UserPardonEventContext) Closure<?> eventClosure) {
+    eventDispatcher.register(UserPardonEvent, eventClosure)
   }
 
-  public void listen(Class<UserRoleUpdateEvent> event,
-                     @DelegatesTo(UserRoleUpdateEventContext) Closure<?> eventClosure) {
-    eventDispatcher.register(event, eventClosure)
+  public void userRoleUpdate(@DelegatesTo(UserRoleUpdateEventContext) Closure<?> eventClosure) {
+    eventDispatcher.register(UserRoleUpdateEvent, eventClosure)
   }
 
-  public void listen(Class<UserUpdateEvent> event, @DelegatesTo(UserUpdateEventContext) Closure<?> eventClosure) {
-    eventDispatcher.register(event, eventClosure)
+  public void userUpdate(@DelegatesTo(UserUpdateEventContext) Closure<?> eventClosure) {
+    eventDispatcher.register(UserUpdateEvent, eventClosure)
   }
 
-  public void listen(Class<UserVoiceChannelJoinEvent> event,
-                     @DelegatesTo(UserVoiceChannelJoinEventContext) Closure<?> eventClosure) {
-    eventDispatcher.register(event, eventClosure)
+  public void userVoiceChannelJoin(@DelegatesTo(UserVoiceChannelJoinEventContext) Closure<?> eventClosure) {
+    eventDispatcher.register(UserVoiceChannelJoinEvent, eventClosure)
   }
 
-  public void listen(Class<UserVoiceChannelLeaveEvent> event,
-                     @DelegatesTo(UserVoiceChannelLeaveEventContext) Closure<?> eventClosure) {
-    eventDispatcher.register(event, eventClosure)
+  public void userVoiceChannelLeave(@DelegatesTo(UserVoiceChannelLeaveEventContext) Closure<?> eventClosure) {
+    eventDispatcher.register(UserVoiceChannelLeaveEvent, eventClosure)
   }
 
-  public void listen(Class<UserVoiceChannelMoveEvent> event,
-                     @DelegatesTo(UserVoiceChannelMoveEventContext) Closure<?> eventClosure) {
-    eventDispatcher.register(event, eventClosure)
+  public void userVoiceChannelMove(@DelegatesTo(UserVoiceChannelMoveEventContext) Closure<?> eventClosure) {
+    eventDispatcher.register(UserVoiceChannelMoveEvent, eventClosure)
   }
 
-  public void listen(Class<UserVoiceStateUpdateEvent> event,
-                     @DelegatesTo(UserVoiceStateUpdateEventContext) Closure<?> eventClosure) {
-    eventDispatcher.register(event, eventClosure)
+  public void userVoiceStateUpdate(@DelegatesTo(UserVoiceStateUpdateEventContext) Closure<?> eventClosure) {
+    eventDispatcher.register(UserVoiceStateUpdateEvent, eventClosure)
   }
 
-  public void listen(Class<VoiceChannelCreateEvent> event,
-                     @DelegatesTo(VoiceChannelCreateEventContext) Closure<?> eventClosure) {
-    eventDispatcher.register(event, eventClosure)
+  public void voiceChannelCreate(@DelegatesTo(VoiceChannelCreateEventContext) Closure<?> eventClosure) {
+    eventDispatcher.register(VoiceChannelCreateEvent, eventClosure)
   }
 
-  public void listen(Class<VoiceChannelDeleteEvent> event,
-                     @DelegatesTo(VoiceChannelDeleteEventContext) Closure<?> eventClosure) {
-    eventDispatcher.register(event, eventClosure)
+  public void voiceChannelDelete(@DelegatesTo(VoiceChannelDeleteEventContext) Closure<?> eventClosure) {
+    eventDispatcher.register(VoiceChannelDeleteEvent, eventClosure)
   }
 
-  public void listen(Class<VoiceChannelUpdateEvent> event,
-                     @DelegatesTo(VoiceChannelUpdateEventContext) Closure<?> eventClosure) {
-    eventDispatcher.register(event, eventClosure)
+  public void voiceChannelUpdate(@DelegatesTo(VoiceChannelUpdateEventContext) Closure<?> eventClosure) {
+    eventDispatcher.register(VoiceChannelUpdateEvent, eventClosure)
   }
 
-  public void listen(Class<VoiceDisconnectedEvent> event,
-                     @DelegatesTo(VoiceDisconnectedEventContext) Closure<?> eventClosure) {
-    eventDispatcher.register(event, eventClosure)
+  public void voiceDisconnected(@DelegatesTo(VoiceDisconnectedEventContext) Closure<?> eventClosure) {
+    eventDispatcher.register(VoiceDisconnectedEvent, eventClosure)
   }
 
-  public void listen(Class<VoicePingEvent> event, @DelegatesTo(VoicePingEventContext) Closure<?> eventClosure) {
-    eventDispatcher.register(event, eventClosure)
+  public void voicePing(@DelegatesTo(VoicePingEventContext) Closure<?> eventClosure) {
+    eventDispatcher.register(VoicePingEvent, eventClosure)
   }
 
-  public void listen(Class<VoiceUserSpeakingEvent> event,
-                     @DelegatesTo(VoiceUserSpeakingEventContext) Closure<?> eventClosure) {
-    eventDispatcher.register(event, eventClosure)
+  public void voiceUserSpeaking(@DelegatesTo(VoiceUserSpeakingEventContext) Closure<?> eventClosure) {
+    eventDispatcher.register(VoiceUserSpeakingEvent, eventClosure)
   }
-
 
 }
