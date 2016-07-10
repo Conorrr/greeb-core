@@ -18,7 +18,7 @@ class BindingSpec {
     module(createModule(moduleClass))
   }
 
-  private <T extends Module> T createModule(Class<T> clazz) {
+  private static <T extends Module> T createModule(Class<T> clazz) {
     try {
       return clazz.newInstance()
     } catch (ReflectiveOperationException e) {

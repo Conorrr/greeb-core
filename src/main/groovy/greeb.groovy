@@ -1,10 +1,13 @@
 import io.greeb.core.SomeGuiceModule
+import sx.blah.discord.api.Event
+import sx.blah.discord.handle.impl.events.AudioPlayEvent
+import sx.blah.discord.handle.impl.events.MessageReceivedEvent
 
 import static io.greeb.core.dsl.DSL.greeb
 
 greeb {
-  // all config should be in here
-  credentials "MTk5NTkxODAxOTQ0OTMyMzUy.Clw72Q.IDSG3h2x2nKWaLe1VeUpCsAC-J4"
+
+  credentials new File('discord.token').text
 
   // add this once we need to get more complicated
   bindings {
@@ -26,7 +29,7 @@ greeb {
     }
 
     // matches message patterns in specific channel
-    messageReceived("some pattern", "some-channel") {
+    messageReceived("some pattern", "some-channel") { MessageReceivedEvent event ->
 
       event.message.channel.sendMessage(event.message.content)
     }
@@ -37,11 +40,11 @@ greeb {
     }
 
     // triggers after specific event
-    def matcher = {""}
-    audioPlay {
+    def matcher = { "" }
+    audioPlay { AudioPlayEvent e ->
+
       ""
     }
-
 
     // todo add support for filters
 //    listen(AudioPlayEvent) { event ->
