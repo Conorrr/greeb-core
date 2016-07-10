@@ -1,5 +1,6 @@
 import io.greeb.core.SomeGuiceModule
 import sx.blah.discord.handle.impl.events.AudioPlayEvent
+import sx.blah.discord.handle.impl.events.MentionEvent
 import sx.blah.discord.handle.impl.events.MessageReceivedEvent
 
 import static io.greeb.core.dsl.DSL.greeb
@@ -21,36 +22,36 @@ greeb {
 //      }
 //    }
 
-    // matches message pattern in any channel
-    messageReceived(/^!greeb/) { event ->
+    messageReceived(/^!greeb/) {
       // simple echo using respond helper
       respond(event.message.content)
     }
 
+    def muteList = ['poo', 'plops', 'wazoo']
     // matches message patterns in specific channel
-    messageReceived("some pattern", "some-channel") { MessageReceivedEvent event ->
+    messageReceived { MessageReceivedEvent event ->
+      muteList.any {event.message.content.contains(it)}
+    } {
+      event.message.channel.sendMessage(event.message.content)
+    }
 
+
+    // matches message patterns in specific channel
+    messageReceived("some pattern", "some-channel") {
       event.message.channel.sendMessage(event.message.content)
     }
 
     // matches all patterns
     messageReceived(".*") {
-
-    }
-
-    // triggers after specific event
-    def matcher = { "" }
-    audioPlay { AudioPlayEvent e ->
-
-      ""
+      println event.message.content
     }
 
     // todo add support for filters
-//    listen(AudioPlayEvent) { event ->
-//      event.filter == "matches"
-//      return false
-//    } {
-//      something()
-//    }
+//    addHelp("!greeb listGames", "lists games available")
+    mention{ MentionEvent event ->
+      event.message.author.name == 'conorrr'
+    } {
+      event.message.channel.sendMessage('@conorrr what do you want?')
+    }
   }
 }

@@ -28,7 +28,7 @@ class EventDispatcher implements IListener<Event> {
     def script = closure.rehydrate(context, this, this)
     script.resolveStrategy = Closure.DELEGATE_ONLY
     // todo add some dependancy injection
-    script(event)
+    script()
   }
 
 

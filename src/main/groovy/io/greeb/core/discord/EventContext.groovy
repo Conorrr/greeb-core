@@ -4,7 +4,7 @@ import sx.blah.discord.api.Event
 
 class EventContext<T extends Event> {
 
-  protected final T event
+  final T event
 
   public EventContext(T event){
     this.event = event

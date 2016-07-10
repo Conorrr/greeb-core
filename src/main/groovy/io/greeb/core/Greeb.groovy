@@ -10,12 +10,8 @@ public class Greeb {
   GreebSpec spec
   IDiscordClient wrappedClient
 
-  // todo create register
-
   public void setup(GreebSpec spec) {
     this.spec = spec
-
-    // todo go through consumers and map them to register
 
     connect(spec.secret, spec.eventDispatcher)
   }
@@ -25,10 +21,6 @@ public class Greeb {
     clientBuilder.withToken(secret)
     wrappedClient = clientBuilder.login()
     wrappedClient.getDispatcher().registerListener(eventDispatcher)
-  }
-
-  public void run() {
-
   }
 
 }
