@@ -1,31 +1,51 @@
 package io.greeb.core.discord
 
+import io.greeb.core.dsl.BindingSpec
 import sx.blah.discord.api.Event
 import sx.blah.discord.api.IListener
 import sx.blah.discord.handle.impl.events.MessageReceivedEvent
 
 class EventDispatcher implements IListener<Event> {
 
-  def registered = [1,2,3]
+  List<Mapping> registered = []
 
-  /**
-   * This is where events come in
-   */
+  // Dispatch
   @Override
   void handle(Event event) {
-    registered.findAll({it})
+    registered.findAll { it.event == event.getClass() }
+            .findAll { it.matcher(event) }
+            .each { dispatch(event, it.closure) }
   }
 
-  void register(Class<Event> event, Closure closure) {
-    registered << new Mapping(event, closure)
+  private EventContext prepareContext(Event event) {
+    String className = "io.greeb.core.discord.contexts." + event.getClass().simpleName + "Context"
+
+    // todo load all classes ahead of time and use them here
+    (EventContext) this.class.classLoader.loadClass(className).newInstance(event)
   }
 
-  void register(Class<MessageReceivedEvent> event, String pattern, Closure closure) {
-    registered << new Mapping(event, pattern, closure)
+  private dispatch(Event event, Closure closure) {
+    EventContext context = prepareContext(event)
+
+    def script = closure.rehydrate(context, this, this)
+    script.resolveStrategy = Closure.DELEGATE_ONLY
+    // todo add some dependancy injection
+    script(event)
   }
 
-  void register(Class<MessageReceivedEvent> event, String pattern, String channel, Closure closure) {
-    registered << new Mapping(event, pattern, channel, closure)
+
+  // Registration
+
+  void register(Class<Event> event, Closure closure, Closure<Boolean> matcher) {
+    registered << new Mapping(event, closure, matcher)
+  }
+
+  void register(String pattern, Closure closure) {
+    registered << new Mapping(pattern, closure)
+  }
+
+  void register(String pattern, String channel, Closure closure) {
+    registered << new Mapping(pattern, channel, closure)
   }
 
 }

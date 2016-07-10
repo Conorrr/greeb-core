@@ -5,4 +5,7 @@ import sx.blah.discord.handle.impl.events.MessageSendEvent
 import sx.blah.discord.handle.impl.events.MessageUpdateEvent
 
 class MessageUpdateEventContext extends EventContext<MessageUpdateEvent> {
+  MessageUpdateEventContext(MessageUpdateEvent event) {
+    super(event)
+  }
 }

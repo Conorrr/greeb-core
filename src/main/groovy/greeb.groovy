@@ -12,25 +12,36 @@ greeb {
   }
 
   consumers {
-    // matches message pattern in any channel
-    messageReceived("some pattern") { injected ->
+    // TODO
+//    messageStartsWith('^!greeb '){
+//      pattern(/talk/){
+//
+//      }
+//    }
 
+    // matches message pattern in any channel
+    messageReceived(/^!greeb/) { event ->
+      // simple echo using respond helper
+      respond(event.message.content)
     }
 
     // matches message patterns in specific channel
-    messageReceived("some pattern", "some channel") {
+    messageReceived("some pattern", "some-channel") {
 
+      event.message.channel.sendMessage(event.message.content)
     }
 
     // matches all patterns
-    messageReceived("*") {
+    messageReceived(".*") {
 
     }
 
     // triggers after specific event
+    def matcher = {""}
     audioPlay {
-
+      ""
     }
+
 
     // todo add support for filters
 //    listen(AudioPlayEvent) { event ->

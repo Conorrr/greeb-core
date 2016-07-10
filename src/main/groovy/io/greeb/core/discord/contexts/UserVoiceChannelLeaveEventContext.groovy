@@ -4,4 +4,7 @@ import io.greeb.core.discord.EventContext
 import sx.blah.discord.handle.impl.events.UserVoiceChannelLeaveEvent
 
 class UserVoiceChannelLeaveEventContext extends EventContext<UserVoiceChannelLeaveEvent> {
+  UserVoiceChannelLeaveEventContext(UserVoiceChannelLeaveEvent event) {
+    super(event)
+  }
 }

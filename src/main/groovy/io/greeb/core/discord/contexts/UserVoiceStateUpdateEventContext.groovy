@@ -5,4 +5,7 @@ import sx.blah.discord.handle.impl.events.UserVoiceChannelMoveEvent
 import sx.blah.discord.handle.impl.events.UserVoiceStateUpdateEvent
 
 class UserVoiceStateUpdateEventContext extends EventContext<UserVoiceStateUpdateEvent> {
+  UserVoiceStateUpdateEventContext(UserVoiceStateUpdateEvent event) {
+    super(event)
+  }
 }

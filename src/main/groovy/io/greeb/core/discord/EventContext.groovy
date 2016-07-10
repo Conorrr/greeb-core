@@ -4,6 +4,10 @@ import sx.blah.discord.api.Event
 
 class EventContext<T extends Event> {
 
-  T event
+  protected final T event
+
+  public EventContext(T event){
+    this.event = event
+  }
 
 }

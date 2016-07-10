@@ -4,4 +4,7 @@ import io.greeb.core.discord.EventContext
 import sx.blah.discord.handle.impl.events.AudioReceiveEvent
 
 class AudioReceiveEventContext extends EventContext<AudioReceiveEvent> {
+  AudioReceiveEventContext(AudioReceiveEvent event) {
+    super(event)
+  }
 }

@@ -5,4 +5,7 @@ import sx.blah.discord.handle.impl.events.RoleDeleteEvent
 import sx.blah.discord.handle.impl.events.RoleUpdateEvent
 
 class RoleUpdateEventContext extends EventContext<RoleUpdateEvent> {
+  RoleUpdateEventContext(RoleUpdateEvent event) {
+    super(event)
+  }
 }

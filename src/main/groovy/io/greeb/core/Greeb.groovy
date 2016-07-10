@@ -17,7 +17,7 @@ public class Greeb {
 
     // todo go through consumers and map them to register
 
-    connect(spec.secret, eventDispatcher)
+    connect(spec.secret, spec.eventDispatcher)
   }
 
   public void connect(String secret, EventDispatcher eventDispatcher) {

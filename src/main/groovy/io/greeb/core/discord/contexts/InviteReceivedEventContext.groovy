@@ -5,4 +5,7 @@ import sx.blah.discord.handle.impl.events.GuildUpdateEvent
 import sx.blah.discord.handle.impl.events.InviteReceivedEvent
 
 class InviteReceivedEventContext extends EventContext<InviteReceivedEvent> {
+  InviteReceivedEventContext(InviteReceivedEvent event) {
+    super(event)
+  }
 }
