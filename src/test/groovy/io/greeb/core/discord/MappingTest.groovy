@@ -1,7 +1,6 @@
 package io.greeb.core.discord
 
 import spock.lang.Specification
-import sx.blah.discord.api.Event
 import sx.blah.discord.handle.impl.events.MessageReceivedEvent
 import sx.blah.discord.handle.obj.IChannel
 import sx.blah.discord.handle.obj.IMessage

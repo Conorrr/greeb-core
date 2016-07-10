@@ -1,5 +1,4 @@
 import io.greeb.core.SomeGuiceModule
-import sx.blah.discord.api.Event
 import sx.blah.discord.handle.impl.events.AudioPlayEvent
 import sx.blah.discord.handle.impl.events.MessageReceivedEvent
 

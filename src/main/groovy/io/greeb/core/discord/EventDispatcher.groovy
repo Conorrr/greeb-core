@@ -1,9 +1,7 @@
 package io.greeb.core.discord
 
-import io.greeb.core.dsl.BindingSpec
 import sx.blah.discord.api.Event
 import sx.blah.discord.api.IListener
-import sx.blah.discord.handle.impl.events.MessageReceivedEvent
 
 class EventDispatcher implements IListener<Event> {
 
