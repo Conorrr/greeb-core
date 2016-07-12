@@ -14,7 +14,7 @@ greeb {
 
   consumers {
     messageReceived(/^!echo/) {
-      respond(event.message.content)
+      respond(content)
     }
 
   }
