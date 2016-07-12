@@ -15,7 +15,7 @@ class EventDispatcher implements IListener<Event> {
   // Dispatch
   @Override
   void handle(Event event) {
-    LOGGER.debug("Received an event $event.class")
+    LOGGER.debug("Received an event ${event.class.name}")
 
     registered.findAll { it.event == event.getClass() }
             .findAll { it.matcher(event) }
