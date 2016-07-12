@@ -4,6 +4,7 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import sx.blah.discord.api.Event
 import sx.blah.discord.api.IListener
+import sx.blah.discord.handle.impl.events.MessageReceivedEvent
 
 // TODO split out EventDispatcher and EventRegister
 class EventDispatcher implements IListener<Event> {
@@ -40,17 +41,17 @@ class EventDispatcher implements IListener<Event> {
 
   // Registration
   void register(Class<Event> event, Closure closure, Closure<Boolean> matcher) {
-    LOGGER.debug("new consumer registered to $event.name")
+    LOGGER.debug("new consumer registered to $event.simpleName")
     registered << new Mapping(event, closure, matcher)
   }
 
   void register(String pattern, Closure closure) {
-    LOGGER.debug("new consumer registered to $event.name")
+    LOGGER.debug("new consumer registered to $MessageReceivedEvent.simpleName")
     registered << new Mapping(pattern, closure)
   }
 
   void register(String pattern, String channel, Closure closure) {
-    LOGGER.debug("new consumer registered to $event.name")
+    LOGGER.debug("new consumer registered to $MessageReceivedEvent.simpleName")
     registered << new Mapping(pattern, channel, closure)
   }
 
