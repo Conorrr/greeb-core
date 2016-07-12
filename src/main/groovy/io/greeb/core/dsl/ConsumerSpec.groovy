@@ -14,26 +14,6 @@ public class ConsumerSpec {
     this.eventRegister = eventRegister
   }
 
-  // matchers with patterns
-  public void messageReceived(String pattern,
-                              @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.MessageReceivedEvent"])
-                              @DelegatesTo(MessageReceivedEventContext) Closure eventClosure) {
-    eventRegister.register(pattern, eventClosure)
-  }
-
-  public void messageReceived(String pattern, boolean privateMsg,
-                              @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.MessageReceivedEvent"])
-                              @DelegatesTo(MessageReceivedEventContext) Closure eventClosure) {
-    eventRegister.register(pattern, privateMsg, eventClosure)
-  }
-
-  public void messageReceived(String pattern, String channel,
-                              @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.MessageReceivedEvent"])
-                              @DelegatesTo(MessageReceivedEventContext) Closure eventClosure) {
-    eventRegister.register(pattern, channel, eventClosure)
-  }
-
-  // specific event matchers
   public void audioPlay(
           @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.AudioPlayEvent"]) Closure<Boolean> filter = {true},
           @DelegatesTo(AudioPlayEventContext) Closure eventClosure) {
