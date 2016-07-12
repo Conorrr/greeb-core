@@ -38,7 +38,7 @@ public class ConsumerSpec {
   public Closure messageReceived(String pattern, String channel,
                                  @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.MessageReceivedEvent"])
                                  @DelegatesTo(MessageReceivedEventContext) Closure eventClosure) {
-    messageReceived(combine(channelMatches(channel)), eventClosure);
+    messageReceived(combine(messageMatches(pattern), channelMatches(channel)), eventClosure);
   }
 
   public ConsumerChainer privateMessageReceived(String pattern) {
