@@ -13,7 +13,7 @@ public abstract class DSL {
     GreebSpec greebSpec = new GreebSpec()
     EventDispatcher eventDispatcher = new EventDispatcher()
 
-    greebSpec.eventDispatcher = eventDispatcher;
+    greebSpec.eventDispatcher = eventDispatcher
 
     def script = closure.rehydrate(greebSpec, this, this)
     script.resolveStrategy = Closure.DELEGATE_ONLY
@@ -30,10 +30,15 @@ public abstract class DSL {
   public static class GreebSpec {
 
     String secret
+    Map properties = [:]
     EventDispatcher eventDispatcher
 
     public void credentials(String secret) {
       this.secret = secret
+    }
+
+    public void properties(String path) {
+      properties += PropertyLoader.loadFile(path)
     }
 
     public void bindings(@DelegatesTo(BindingSpec) Closure closure) {
@@ -48,7 +53,6 @@ public abstract class DSL {
       def script = closure.rehydrate(consumerSpec, this, this)
       script.resolveStrategy = Closure.DELEGATE_ONLY
       script()
-
     }
 
   }
