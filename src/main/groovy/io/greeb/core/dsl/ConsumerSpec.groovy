@@ -6,6 +6,10 @@ import io.greeb.core.discord.EventRegister
 import io.greeb.core.discord.contexts.*
 import sx.blah.discord.handle.impl.events.*
 
+import static io.greeb.core.dsl.DiscordMatchers.combine
+import static io.greeb.core.dsl.DiscordMatchers.messageMatches
+import static io.greeb.core.dsl.DiscordMatchers.privateChat
+
 public class ConsumerSpec {
 
   EventRegister eventRegister
@@ -14,6 +18,28 @@ public class ConsumerSpec {
     this.eventRegister = eventRegister
   }
 
+  // message in any channel matches pattern
+  public void messageReceived(String pattern,
+                              @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.MessageReceivedEvent"])
+                              @DelegatesTo(MessageReceivedEventContext) Closure eventClosure) {
+    messageReceived(messageMatches(pattern), eventClosure)
+  }
+
+  // message matches pattern in private channel
+  public void privateMessageReceived(String pattern,
+                                     @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.MessageReceivedEvent"])
+                                     @DelegatesTo(MessageReceivedEventContext) Closure eventClosure) {
+    messageReceived(combine(privateChat(), messageMatches(pattern)), eventClosure)
+  }
+
+  // message matches pattern in private or public channel
+  public void messageReceived(String pattern, String channel,
+                              @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.MessageReceivedEvent"])
+                              @DelegatesTo(MessageReceivedEventContext) Closure eventClosure) {
+    messageReceived(combine(DiscordMatchers.channelMatches()), eventClosure);
+  }
+
+  // specific event matchers
   public void audioPlay(
           @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.AudioPlayEvent"]) Closure<Boolean> filter = {true},
           @DelegatesTo(AudioPlayEventContext) Closure eventClosure) {

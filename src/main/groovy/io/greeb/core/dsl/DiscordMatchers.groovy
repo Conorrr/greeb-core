@@ -33,10 +33,9 @@ public class DiscordMatchers {
     }
   }
 
-  public static Closure<Boolean> messageMatchesOrPrivate(String pattern) {
-    Pattern compiled = ~pattern
+  public static Closure<Boolean> channelMatchesOrPrivate(String channel) {
     return { MessageReceivedEvent event ->
-      privateChat() || messageMatches(pattern)
+      privateChat() || channelMatches(channel)
     }
   }
 
@@ -49,6 +48,12 @@ public class DiscordMatchers {
   public static Closure<Boolean> privateChat(Boolean isPrivateChat = true) {
     return { MessageReceivedEvent event ->
       event.message.channel.private == isPrivateChat
+    }
+  }
+
+  public static Closure<Boolean> combine(Closure<Boolean>... filters) {
+    return { Event event ->
+      filters.every { it(event) }
     }
   }
 

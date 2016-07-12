@@ -42,6 +42,11 @@ Todo
 ## Logging
 Todo
 
+## FAQs
+
+### Why do you not use the event dispatcher built into Discord4J
+Firstly it made integrating with Groovy a bit messier. Secondly I did not want to couple the framework too tightly to Discord4J in case we want to change the Discord API interface.
+
 ## Contributing
 Todo
 
