@@ -17,13 +17,13 @@ public class ConsumerSpec {
   // matchers with patterns
   public void messageReceived(String pattern,
                               @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.MessageReceivedEvent"])
-                              @DelegatesTo(MessageReceivedEventContext) Closure<?> eventClosure) {
+                              @DelegatesTo(MessageReceivedEventContext) Closure eventClosure) {
     eventDispatcher.register(pattern, eventClosure)
   }
 
   public void messageReceived(String pattern, String channel,
                               @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.MessageReceivedEvent"])
-                              @DelegatesTo(MessageReceivedEventContext) Closure<?> eventClosure) {
+                              @DelegatesTo(MessageReceivedEventContext) Closure eventClosure) {
     eventDispatcher.register(pattern, channel, eventClosure)
   }
 
