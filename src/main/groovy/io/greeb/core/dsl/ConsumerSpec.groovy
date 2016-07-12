@@ -356,4 +356,229 @@ public class ConsumerSpec {
     eventClosure
   }
 
+  public ConsumerChainer audioPlay(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.AudioPlayEvent"]) Closure<Boolean> filter = null) {
+    new ConsumerChainer(filter, eventRegister, AudioPlayEvent)
+  }
+
+  public ConsumerChainer audioQueued(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.AudioQueuedEvent"]) Closure<Boolean> filter = null) {
+    new ConsumerChainer(filter, eventRegister, AudioQueuedEvent)
+  }
+
+  public ConsumerChainer audioReceive(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.AudioReceiveEvent"]) Closure<Boolean> filter = null) {
+    new ConsumerChainer(filter, eventRegister, AudioReceiveEvent)
+  }
+
+  public ConsumerChainer audioStop(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.AudioStopEvent"]) Closure<Boolean> filter = null) {
+    new ConsumerChainer(filter, eventRegister, AudioStopEvent)
+  }
+
+  public ConsumerChainer audioUnqueued(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.AudioUnqueuedEvent"]) Closure<Boolean> filter = null) {
+    new ConsumerChainer(filter, eventRegister, AudioUnqueuedEvent)
+  }
+
+  public ConsumerChainer channelCreate(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.ChannelCreateEvent"]) Closure<Boolean> filter = null) {
+    new ConsumerChainer(filter, eventRegister, ChannelCreateEvent)
+  }
+
+  public ConsumerChainer channelDelete(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.ChannelDeleteEvent"]) Closure<Boolean> filter = null) {
+    new ConsumerChainer(filter, eventRegister, ChannelDeleteEvent)
+  }
+
+  public ConsumerChainer channelUpdate(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.ChannelUpdateEvent"]) Closure<Boolean> filter = null) {
+    new ConsumerChainer(filter, eventRegister, ChannelUpdateEvent)
+  }
+
+  public ConsumerChainer discordDisconnected(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.DiscordDisconnectedEvent"]) Closure<Boolean> filter = null) {
+    new ConsumerChainer(filter, eventRegister, DiscordDisconnectedEvent)
+  }
+
+  public ConsumerChainer gameChange(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.GameChangeEvent"]) Closure<Boolean> filter = null) {
+    new ConsumerChainer(filter, eventRegister, GameChangeEvent)
+  }
+
+  public ConsumerChainer guildCreate(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.GuildCreateEvent"]) Closure<Boolean> filter = null) {
+    new ConsumerChainer(filter, eventRegister, GuildCreateEvent)
+  }
+
+  public ConsumerChainer guildLeave(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.GuildLeaveEvent"]) Closure<Boolean> filter = null) {
+    new ConsumerChainer(filter, eventRegister, GuildLeaveEvent)
+  }
+
+  public ConsumerChainer guildTransferOwnership(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.GuildTransferOwnershipEvent"]) Closure<Boolean> filter = null) {
+    new ConsumerChainer(filter, eventRegister, GuildTransferOwnershipEvent)
+  }
+
+  public ConsumerChainer guildUnavailable(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.GuildUnavailableEvent"]) Closure<Boolean> filter = null) {
+    new ConsumerChainer(filter, eventRegister, GuildUnavailableEvent)
+  }
+
+  public ConsumerChainer guildUpdate(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.GuildUpdateEvent"]) Closure<Boolean> filter = null) {
+    new ConsumerChainer(filter, eventRegister, GuildUpdateEvent)
+  }
+
+  public ConsumerChainer inviteReceived(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.InviteReceivedEvent"]) Closure<Boolean> filter = null) {
+    new ConsumerChainer(filter, eventRegister, InviteReceivedEvent)
+  }
+
+  public ConsumerChainer mention(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.MentionEvent"]) Closure<Boolean> filter = null) {
+    new ConsumerChainer(filter, eventRegister, MentionEvent)
+  }
+
+  public ConsumerChainer messageDelete(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.MessageDeleteEvent"]) Closure<Boolean> filter = null) {
+    new ConsumerChainer(filter, eventRegister, MessageDeleteEvent)
+  }
+
+  public ConsumerChainer messageReceived(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.MessageReceivedEvent"]) Closure<Boolean> filter = null) {
+    new ConsumerChainer(filter, eventRegister, MessageReceivedEvent)
+  }
+
+  public ConsumerChainer messageSend(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.MessageSendEvent"]) Closure<Boolean> filter = null) {
+    new ConsumerChainer(filter, eventRegister, MessageSendEvent)
+  }
+
+  public ConsumerChainer messageUpdate(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.MessageUpdateEvent"]) Closure<Boolean> filter = null) {
+    new ConsumerChainer(filter, eventRegister, MessageUpdateEvent)
+  }
+
+  public ConsumerChainer moduleDisabled(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.ModuleDisabledEvent"]) Closure<Boolean> filter = null) {
+    new ConsumerChainer(filter, eventRegister, ModuleDisabledEvent)
+  }
+
+  public ConsumerChainer moduleEnabled(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.ModuleEnabledEvent"]) Closure<Boolean> filter = null) {
+    new ConsumerChainer(filter, eventRegister, ModuleEnabledEvent)
+  }
+
+  public ConsumerChainer presenceUpdate(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.PresenceUpdateEvent"]) Closure<Boolean> filter = null) {
+    new ConsumerChainer(filter, eventRegister, PresenceUpdateEvent)
+  }
+
+  public ConsumerChainer ready(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.ReadyEvent"]) Closure<Boolean> filter = null) {
+    new ConsumerChainer(filter, eventRegister, ReadyEvent)
+  }
+
+  public ConsumerChainer roleCreate(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.RoleCreateEvent"]) Closure<Boolean> filter = null) {
+    new ConsumerChainer(filter, eventRegister, RoleCreateEvent)
+  }
+
+  public ConsumerChainer roleDelete(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.RoleDeleteEvent"]) Closure<Boolean> filter = null) {
+    new ConsumerChainer(filter, eventRegister, RoleDeleteEvent)
+  }
+
+  public ConsumerChainer roleUpdate(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.RoleUpdateEvent"]) Closure<Boolean> filter = null) {
+    new ConsumerChainer(filter, eventRegister, RoleUpdateEvent)
+  }
+
+  public ConsumerChainer typing(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.TypingEvent"]) Closure<Boolean> filter = null) {
+    new ConsumerChainer(filter, eventRegister, TypingEvent)
+  }
+
+  public ConsumerChainer userBan(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.UserBanEvent"]) Closure<Boolean> filter = null) {
+    new ConsumerChainer(filter, eventRegister, UserBanEvent)
+  }
+
+  public ConsumerChainer userJoin(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.UserJoinEvent"]) Closure<Boolean> filter = null) {
+    new ConsumerChainer(filter, eventRegister, UserJoinEvent)
+  }
+
+  public ConsumerChainer userLeave(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.UserPardonEvent"]) Closure<Boolean> filter = null) {
+    new ConsumerChainer(filter, eventRegister, UserPardonEvent)
+  }
+
+  public ConsumerChainer userPardon(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.UserPardonEvent"]) Closure<Boolean> filter = null) {
+    new ConsumerChainer(filter, eventRegister, UserPardonEvent)
+  }
+
+  public ConsumerChainer userRoleUpdate(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.UserRoleUpdateEvent"]) Closure<Boolean> filter = null) {
+    new ConsumerChainer(filter, eventRegister, UserRoleUpdateEvent)
+  }
+
+  public ConsumerChainer userUpdate(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.UserUpdateEvent"]) Closure<Boolean> filter = null) {
+    new ConsumerChainer(filter, eventRegister, UserUpdateEvent)
+  }
+
+  public ConsumerChainer userVoiceChannelJoin(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.UserVoiceChannelJoinEvent"]) Closure<Boolean> filter = null) {
+    new ConsumerChainer(filter, eventRegister, UserVoiceChannelJoinEvent)
+  }
+
+  public ConsumerChainer userVoiceChannelLeave(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.UserVoiceChannelLeaveEvent"]) Closure<Boolean> filter = null) {
+    new ConsumerChainer(filter, eventRegister, UserVoiceChannelLeaveEvent)
+  }
+
+  public ConsumerChainer userVoiceChannelMove(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.UserVoiceChannelMoveEvent"]) Closure<Boolean> filter = null) {
+    new ConsumerChainer(filter, eventRegister, UserVoiceChannelMoveEvent)
+  }
+
+  public ConsumerChainer userVoiceStateUpdate(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.UserVoiceStateUpdateEvent"]) Closure<Boolean> filter = null) {
+    new ConsumerChainer(filter, eventRegister, UserVoiceStateUpdateEvent)
+  }
+
+  public ConsumerChainer voiceChannelCreate(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.VoiceChannelCreateEvent"]) Closure<Boolean> filter = null) {
+    new ConsumerChainer(filter, eventRegister, VoiceChannelCreateEvent)
+  }
+
+  public ConsumerChainer voiceChannelDelete(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.VoiceChannelDeleteEvent"]) Closure<Boolean> filter = null) {
+    new ConsumerChainer(filter, eventRegister, VoiceChannelDeleteEvent)
+  }
+
+  public ConsumerChainer voiceChannelUpdate(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.VoiceChannelUpdateEvent"]) Closure<Boolean> filter = null) {
+    new ConsumerChainer(filter, eventRegister, VoiceChannelUpdateEvent)
+  }
+
+  public ConsumerChainer voiceDisconnected(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.VoiceDisconnectedEvent"]) Closure<Boolean> filter = null) {
+    new ConsumerChainer(filter, eventRegister, VoiceDisconnectedEvent)
+  }
+
+  public ConsumerChainer voicePing(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.VoicePingEvent"]) Closure<Boolean> filter = null) {
+    new ConsumerChainer(filter, eventRegister, VoicePingEvent)
+  }
+
+  public ConsumerChainer voiceUserSpeaking(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.VoiceUserSpeakingEvent"]) Closure<Boolean> filter = null) {
+    new ConsumerChainer(filter, eventRegister, VoiceUserSpeakingEvent)
+  }
+
 }
