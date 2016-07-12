@@ -13,7 +13,9 @@ public class Greeb {
   public void setup(GreebSpec spec) {
     this.spec = spec
 
-    connect(spec.secret, spec.eventDispatcher)
+    EventDispatcher eventDispatcher = new EventDispatcher(spec.eventRegister.registered)
+
+    connect(spec.secret, eventDispatcher)
   }
 
   public void connect(String secret, EventDispatcher eventDispatcher) {

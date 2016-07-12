@@ -25,7 +25,7 @@ public class PropertyLoader {
     LOGGER.debug("Attempting to load $path")
     def resource = Paths.get(path)
     if (resource) {
-      (Map) slurper.parse(resource.newInputStream())
+      return (Map) slurper.parse(resource.newInputStream())
     }
     LOGGER.warn("file not found: $path")
     [:]

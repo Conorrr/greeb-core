@@ -6,14 +6,16 @@ import sx.blah.discord.api.Event
 import sx.blah.discord.api.IListener
 import sx.blah.discord.handle.impl.events.MessageReceivedEvent
 
-// TODO split out EventDispatcher and EventRegister
 class EventDispatcher implements IListener<Event> {
 
   private final static Logger LOGGER = LoggerFactory.getLogger(EventDispatcher.class)
 
   List<Mapping> registered = []
 
-  // Dispatch
+  public EventDispatcher(List<Mapping> registered){
+    this.registered = registered
+  }
+
   @Override
   void handle(Event event) {
     LOGGER.debug("Received an event ${event.class.name}")
@@ -37,22 +39,6 @@ class EventDispatcher implements IListener<Event> {
     script.resolveStrategy = Closure.DELEGATE_ONLY
     // todo add some dependancy injection
     script()
-  }
-
-  // Registration
-  void register(Class<Event> event, Closure closure, Closure<Boolean> matcher) {
-    LOGGER.debug("new consumer registered to $event.simpleName")
-    registered << new Mapping(event, closure, matcher)
-  }
-
-  void register(String pattern, Closure closure) {
-    LOGGER.debug("new consumer registered to $MessageReceivedEvent.simpleName")
-    registered << new Mapping(pattern, closure)
-  }
-
-  void register(String pattern, String channel, Closure closure) {
-    LOGGER.debug("new consumer registered to $MessageReceivedEvent.simpleName")
-    registered << new Mapping(pattern, channel, closure)
   }
 
 }

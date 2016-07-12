@@ -2,6 +2,7 @@ package io.greeb.core.dsl
 
 import io.greeb.core.Greeb
 import io.greeb.core.discord.EventDispatcher
+import io.greeb.core.discord.EventRegister
 
 public abstract class DSL {
 
@@ -11,9 +12,6 @@ public abstract class DSL {
 
   public static void greeb(@DelegatesTo(GreebSpec) Closure<?> closure) {
     GreebSpec greebSpec = new GreebSpec()
-    EventDispatcher eventDispatcher = new EventDispatcher()
-
-    greebSpec.eventDispatcher = eventDispatcher
 
     def script = closure.rehydrate(greebSpec, this, this)
     script.resolveStrategy = Closure.DELEGATE_ONLY
@@ -31,7 +29,7 @@ public abstract class DSL {
 
     String secret
     Map properties = [:]
-    EventDispatcher eventDispatcher
+    EventRegister eventRegister = new EventRegister()
 
     public void credentials(String secret) {
       this.secret = secret
@@ -49,7 +47,7 @@ public abstract class DSL {
     }
 
     public void consumers(@DelegatesTo(ConsumerSpec) Closure closure) {
-      ConsumerSpec consumerSpec = new ConsumerSpec(eventDispatcher)
+      ConsumerSpec consumerSpec = new ConsumerSpec(eventRegister)
       def script = closure.rehydrate(consumerSpec, this, this)
       script.resolveStrategy = Closure.DELEGATE_ONLY
       script()
