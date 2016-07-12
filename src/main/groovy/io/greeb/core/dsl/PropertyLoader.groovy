@@ -22,6 +22,7 @@ public class PropertyLoader {
 //  }
 
   public static Map loadFile(String path) {
+    LOGGER.debug("Attempting to load $path")
     def resource = Paths.get(path)
     if (resource) {
       (Map) slurper.parse(resource.newInputStream())
