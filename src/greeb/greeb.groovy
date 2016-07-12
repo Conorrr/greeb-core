@@ -1,8 +1,0 @@
-greeb {
-  dataSources {
-
-  }
-  consumers {
-
-  }
-}

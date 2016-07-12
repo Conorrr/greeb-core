@@ -11,7 +11,7 @@ public class PropertyLoader {
 
   static def slurper = new JsonSlurper()
 
-  private final static Logger LOGGER = LoggerFactory.getLogger(PropertyLoader.class);
+  private final static Logger LOGGER = LoggerFactory.getLogger(PropertyLoader.class)
 
 //  private static Map loadFileFromClasspath(String path) {
 //    def resource = this.getClass().getResource(path)
