@@ -30,7 +30,6 @@ public abstract class DSL {
     String secret
     Map properties = [:]
     EventRegister eventRegister = new EventRegister()
-    BindingSpec bindingSpec = new BindingSpec()
 
     public void credentials(String secret) {
       this.secret = secret
@@ -41,6 +40,7 @@ public abstract class DSL {
     }
 
     public void bindings(@DelegatesTo(BindingSpec) Closure closure) {
+      BindingSpec bindingSpec = new BindingSpec()
       def script = closure.rehydrate(bindingSpec, this, this)
       script.resolveStrategy = Closure.DELEGATE_ONLY
       script()
