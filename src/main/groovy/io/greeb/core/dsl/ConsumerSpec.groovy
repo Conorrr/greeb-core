@@ -22,21 +22,18 @@ public class ConsumerSpec {
 
   // message in any channel matches pattern
   public Closure messageReceived(String pattern,
-                                 @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.MessageReceivedEvent"])
                                  @DelegatesTo(MessageReceivedEventContext) Closure eventClosure) {
     messageReceived(messageMatches(pattern), eventClosure)
   }
 
   // message matches pattern in private channel
   public Closure privateMessageReceived(String pattern,
-                                        @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.MessageReceivedEvent"])
                                         @DelegatesTo(MessageReceivedEventContext) Closure eventClosure) {
     messageReceived(combine(privateChat(), messageMatches(pattern)), eventClosure)
   }
 
   // message matches pattern in private or public channel
   public Closure messageReceived(String pattern, String channel,
-                                 @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.MessageReceivedEvent"])
                                  @DelegatesTo(MessageReceivedEventContext) Closure eventClosure) {
     messageReceived(combine(messageMatches(pattern), channelMatches(channel)), eventClosure);
   }

@@ -1,5 +1,7 @@
 package io.greeb.core
 
+import com.google.inject.Guice
+import com.google.inject.Injector
 import io.greeb.core.discord.EventDispatcher
 import io.greeb.core.dsl.DSL.GreebSpec
 import sx.blah.discord.api.ClientBuilder
@@ -9,11 +11,14 @@ public class Greeb {
 
   GreebSpec spec
   IDiscordClient wrappedClient
+  Injector guiceInjector
 
   public void setup(GreebSpec spec) {
     this.spec = spec
 
-    EventDispatcher eventDispatcher = new EventDispatcher(spec.eventRegister.registered)
+    guiceInjector = Guice.createInjector(spec.bindingSpec.modules)
+
+    EventDispatcher eventDispatcher = new EventDispatcher(spec.eventRegister.registered, guiceInjector)
 
     connect(spec.secret, eventDispatcher)
   }

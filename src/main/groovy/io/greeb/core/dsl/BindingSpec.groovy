@@ -4,11 +4,7 @@ import com.google.inject.Module
 
 class BindingSpec {
 
-  private final List<Module> modules
-
-  public BindingSpec() {
-    modules = new ArrayList<>()
-  }
+  final List<Module> modules = []
 
   public void module(Module module) {
     this.modules.add(module)

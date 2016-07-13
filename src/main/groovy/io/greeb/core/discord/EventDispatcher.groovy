@@ -1,19 +1,24 @@
 package io.greeb.core.discord
 
+import com.google.inject.Injector
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import sx.blah.discord.api.Event
 import sx.blah.discord.api.IListener
+import sx.blah.discord.handle.impl.events.AudioPlayEvent
 import sx.blah.discord.handle.impl.events.MessageReceivedEvent
+import sx.blah.discord.handle.obj.IMessage
 
 class EventDispatcher implements IListener<Event> {
 
   private final static Logger LOGGER = LoggerFactory.getLogger(EventDispatcher.class)
 
-  List<Mapping> registered = []
+  final List<Mapping> registered
+  final Injector injector
 
-  public EventDispatcher(List<Mapping> registered){
+  public EventDispatcher(List<Mapping> registered, Injector injector) {
     this.registered = registered
+    this.injector = injector
   }
 
   @Override
@@ -38,7 +43,11 @@ class EventDispatcher implements IListener<Event> {
     def script = closure.rehydrate(context, this, this)
     script.resolveStrategy = Closure.DELEGATE_ONLY
     // todo add some dependancy injection
-    script()
+    script(*getInjectedParams(closure))
+  }
+
+  private List<Object> getInjectedParams(Closure closure) {
+    closure.getParameterTypes().collect { injector.getInstance(it) }
   }
 
 }
