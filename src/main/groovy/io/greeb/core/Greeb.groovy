@@ -21,6 +21,8 @@ public class Greeb {
 
     guiceInjector = Guice.createInjector(spec.bindingSpec.modules + propertiesModule)
 
+    spec.appStart(getInjectedParams(spec.appStart))
+
     EventDispatcher eventDispatcher = new EventDispatcher(spec.eventRegister.registered, guiceInjector)
 
     connect(spec.secret, eventDispatcher)
@@ -31,6 +33,10 @@ public class Greeb {
     clientBuilder.withToken(secret)
     wrappedClient = clientBuilder.login()
     wrappedClient.getDispatcher().registerListener(eventDispatcher)
+  }
+
+  private List<Object> getInjectedParams(Closure closure) {
+    closure.getParameterTypes().collect { guiceInjector.getInstance(it) }
   }
 
 }

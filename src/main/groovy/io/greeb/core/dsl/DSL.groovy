@@ -29,6 +29,7 @@ public abstract class DSL {
 
     String secret
     Map properties = [:]
+    Closure appStart = {/*do nothing*/}
     EventRegister eventRegister = new EventRegister()
     BindingSpec bindingSpec = new BindingSpec()
 
@@ -44,6 +45,10 @@ public abstract class DSL {
       def script = closure.rehydrate(bindingSpec, this, this)
       script.resolveStrategy = Closure.DELEGATE_ONLY
       script()
+    }
+
+    public void onAppStart(Closure closure) {
+      this.appStart = closure
     }
 
     public void consumers(@DelegatesTo(ConsumerSpec) Closure closure) {
