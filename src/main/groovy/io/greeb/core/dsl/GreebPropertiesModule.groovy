@@ -18,7 +18,6 @@ public class GreebPropertiesModule extends AbstractModule {
 
   private void addMap(String prefix, Map ele) {
     ele.each { k, v ->
-      println prefix + k
       if (v instanceof Map) {
         bind(Map).annotatedWith(Names.named(prefix + k))
                 .toInstance(v as Map)
