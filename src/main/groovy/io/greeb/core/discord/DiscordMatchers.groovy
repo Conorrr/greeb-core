@@ -25,9 +25,15 @@ public class DiscordMatchers {
     }
   }
 
-  public static Closure<Boolean> channelMatches(String channel) {
+  public static Closure<Boolean> channelNameMatches(String channel) {
     return { MessageReceivedEvent event ->
       event.message.channel.name.equalsIgnoreCase(channel)
+    }
+  }
+
+  public static Closure<Boolean> channelMatches(String channel) {
+    return { MessageReceivedEvent event ->
+      event.message.channel.ID == channel
     }
   }
 
