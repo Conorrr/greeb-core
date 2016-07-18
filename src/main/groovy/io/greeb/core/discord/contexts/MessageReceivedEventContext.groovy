@@ -21,4 +21,8 @@ class MessageReceivedEventContext extends EventContext<MessageReceivedEvent> {
     event.message.channel.sendMessage(message)
   }
 
+  String getParts(){
+    return content.split(/\s+/)
+  }
+
 }
