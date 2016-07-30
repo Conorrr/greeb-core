@@ -7,6 +7,7 @@ import io.greeb.core.discord.EventRegister
 import io.greeb.core.discord.contexts.*
 import sx.blah.discord.handle.impl.events.*
 
+import static io.greeb.core.discord.DiscordMatchers.channelNameMatches
 import static io.greeb.core.discord.DiscordMatchers.combine
 import static io.greeb.core.discord.DiscordMatchers.messageMatches
 import static io.greeb.core.discord.DiscordMatchers.privateChat
