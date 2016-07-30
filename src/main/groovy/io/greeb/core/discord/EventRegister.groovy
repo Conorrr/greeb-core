@@ -15,10 +15,4 @@ class EventRegister {
     registered << new Mapping(event, closure, matcher)
   }
 
-  public <T extends Event> void unregister(Class<T> eventClass, T event){
-    registered.removeIf({ matcher ->
-      matcher.event == eventClass && matcher.matcher.call(event)
-    })
-  }
-
 }

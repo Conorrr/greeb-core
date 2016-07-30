@@ -17,22 +17,6 @@ public class ConsumerSpec {
     this.eventRegister = eventRegister
   }
 
-  public <T extends Event> void unregister(Class<T> event, T matchesEvent) {
-    eventRegister.unregister(event, matchesEvent);
-  }
-
-  public void unregister(String message) {
-    MessageReceivedEvent mockEvent = [message: [content: message]] as MessageReceivedEvent
-
-    eventRegister.unregister(MessageReceivedEvent, mockEvent);
-  }
-
-  public void unregister(String message, String channel) {
-    MessageReceivedEvent mockEvent = [message: [content: message], channel: [name: channel]] as MessageReceivedEvent
-
-    eventRegister.unregister(MessageReceivedEvent, mockEvent);
-  }
-
   // message in any channel matches pattern
   public Closure messageReceived(String pattern,
                                  @DelegatesTo(MessageReceivedEventContext) Closure eventClosure) {

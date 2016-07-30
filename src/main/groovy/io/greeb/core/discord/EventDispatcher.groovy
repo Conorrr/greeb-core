@@ -34,20 +34,26 @@ class EventDispatcher implements IListener<Event> {
     String className = "io.greeb.core.discord.contexts.${event.getClass().simpleName}Context"
 
     // todo load all classes ahead of time and use them here
-    (EventContext) this.class.classLoader.loadClass(className).newInstance(event)
+    (EventContext) this.class.classLoader.loadClass(className).newInstance(event, this)
   }
 
   private dispatch(Event event, Closure closure) {
     EventContext context = prepareContext(event)
 
     def script = closure.rehydrate(context, this, this)
-    script.resolveStrategy = Closure.DELEGATE_ONLY
+    script.resolveStrategy = Closure.OWNER_FIRST
     // todo add some dependancy injection
     script(*getInjectedParams(closure))
   }
 
   private List<Object> getInjectedParams(Closure closure) {
     closure.getParameterTypes().collect { injector.getInstance(it) }
+  }
+
+  public <T extends Event> void unregister(Class<T> eventClass, T event){
+    registered.removeIf({ matcher ->
+      matcher.event == eventClass && matcher.matcher.call(event)
+    })
   }
 
 }

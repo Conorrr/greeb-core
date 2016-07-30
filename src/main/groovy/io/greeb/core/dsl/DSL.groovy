@@ -14,7 +14,7 @@ public abstract class DSL {
     GreebSpec greebSpec = new GreebSpec()
 
     def script = closure.rehydrate(greebSpec, this, this)
-    script.resolveStrategy = Closure.DELEGATE_ONLY
+    script.resolveStrategy = Closure.OWNER_FIRST
     script()
 
     startServer(greebSpec)
@@ -43,7 +43,7 @@ public abstract class DSL {
 
     public void bindings(@DelegatesTo(BindingSpec) Closure closure) {
       def script = closure.rehydrate(bindingSpec, this, this)
-      script.resolveStrategy = Closure.DELEGATE_ONLY
+      script.resolveStrategy = Closure.OWNER_FIRST
       script()
     }
 
@@ -54,7 +54,7 @@ public abstract class DSL {
     public void consumers(@DelegatesTo(ConsumerSpec) Closure closure) {
       ConsumerSpec consumerSpec = new ConsumerSpec(eventRegister)
       def script = closure.rehydrate(consumerSpec, this, this)
-      script.resolveStrategy = Closure.DELEGATE_ONLY
+      script.resolveStrategy = Closure.OWNER_FIRST
       script()
     }
 

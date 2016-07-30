@@ -1,10 +1,11 @@
 package io.greeb.core.discord.contexts
 
 import io.greeb.core.discord.EventContext
+import io.greeb.core.discord.EventDispatcher
 import sx.blah.discord.handle.impl.events.UserRoleUpdateEvent
 
 class UserRoleUpdateEventContext extends EventContext<UserRoleUpdateEvent> {
-  UserRoleUpdateEventContext(UserRoleUpdateEvent event) {
-    super(event)
+  UserRoleUpdateEventContext(UserRoleUpdateEvent event, EventDispatcher eventDispatcher) {
+    super(event, eventDispatcher)
   }
 }

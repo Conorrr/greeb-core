@@ -1,14 +1,15 @@
 package io.greeb.core.discord.contexts
 
 import io.greeb.core.discord.EventContext
+import io.greeb.core.discord.EventDispatcher
 import sx.blah.discord.handle.impl.events.UserJoinEvent
 import sx.blah.discord.handle.obj.IUser
 
 class UserJoinEventContext extends EventContext<UserJoinEvent> {
   final IUser user
 
-  UserJoinEventContext(UserJoinEvent event) {
-    super(event)
+  UserJoinEventContext(UserJoinEvent event, EventDispatcher eventDispatcher) {
+    super(event, eventDispatcher)
     this.user = event.user
   }
 }

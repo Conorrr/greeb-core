@@ -1,10 +1,11 @@
 package io.greeb.core.discord.contexts
 
 import io.greeb.core.discord.EventContext
+import io.greeb.core.discord.EventDispatcher
 import sx.blah.discord.handle.impl.events.UserUpdateEvent
 
 class UserUpdateEventContext extends EventContext<UserUpdateEvent> {
-  UserUpdateEventContext(UserUpdateEvent event) {
-    super(event)
+  UserUpdateEventContext(UserUpdateEvent event, EventDispatcher eventDispatcher) {
+    super(event, eventDispatcher)
   }
 }
