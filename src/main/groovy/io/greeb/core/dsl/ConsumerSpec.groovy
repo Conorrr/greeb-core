@@ -2,15 +2,12 @@ package io.greeb.core.dsl
 
 import groovy.transform.stc.ClosureParams
 import groovy.transform.stc.SimpleType
-import io.greeb.core.discord.DiscordMatchers
 import io.greeb.core.discord.EventRegister
 import io.greeb.core.discord.contexts.*
+import sx.blah.discord.api.Event
 import sx.blah.discord.handle.impl.events.*
 
-import static io.greeb.core.discord.DiscordMatchers.channelNameMatches
-import static io.greeb.core.discord.DiscordMatchers.combine
-import static io.greeb.core.discord.DiscordMatchers.messageMatches
-import static io.greeb.core.discord.DiscordMatchers.privateChat
+import static io.greeb.core.discord.DiscordMatchers.*
 
 public class ConsumerSpec {
 
@@ -18,6 +15,22 @@ public class ConsumerSpec {
 
   ConsumerSpec(EventRegister eventRegister) {
     this.eventRegister = eventRegister
+  }
+
+  public <T extends Event> void unregister(Class<T> event, T matchesEvent) {
+    eventRegister.unregister(event, matchesEvent);
+  }
+
+  public void unregister(String message) {
+    MessageReceivedEvent mockEvent = [message: [content: message]] as MessageReceivedEvent
+
+    eventRegister.unregister(MessageReceivedEvent, mockEvent);
+  }
+
+  public void unregister(String message, String channel) {
+    MessageReceivedEvent mockEvent = [message: [content: message], channel: [name: channel]] as MessageReceivedEvent
+
+    eventRegister.unregister(MessageReceivedEvent, mockEvent);
   }
 
   // message in any channel matches pattern
