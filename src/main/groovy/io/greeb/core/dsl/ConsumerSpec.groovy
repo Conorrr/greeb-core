@@ -7,7 +7,6 @@ import io.greeb.core.discord.EventRegister
 import io.greeb.core.discord.contexts.*
 import sx.blah.discord.handle.impl.events.*
 
-import static io.greeb.core.discord.DiscordMatchers.channelMatches
 import static io.greeb.core.discord.DiscordMatchers.combine
 import static io.greeb.core.discord.DiscordMatchers.messageMatches
 import static io.greeb.core.discord.DiscordMatchers.privateChat
@@ -35,7 +34,7 @@ public class ConsumerSpec {
   // message matches pattern in private or public channel
   public Closure messageReceived(String pattern, String channel,
                                  @DelegatesTo(MessageReceivedEventContext) Closure eventClosure) {
-    messageReceived(combine(messageMatches(pattern), channelMatches(channel)), eventClosure);
+    messageReceived(combine(messageMatches(pattern), channelNameMatches(channel)), eventClosure);
   }
 
   public ConsumerChainer privateMessageReceived(String pattern) {
