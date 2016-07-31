@@ -28,7 +28,12 @@ class EventContext<T extends Event> {
   }
 
   public void unregister(String message) {
-    MessageReceivedEvent mockEvent = new MessageReceivedEvent([getContent: { message }] as IMessage)
+    MessageReceivedEvent mockEvent = new MessageReceivedEvent([getContent: { message },
+                                                               getChannel: {
+                                                                 [isPrivate: { false },
+                                                                  getName  : { '' }] as IChannel
+                                                               }
+    ] as IMessage)
 
     eventDispatcher.unregister(MessageReceivedEvent, mockEvent);
   }

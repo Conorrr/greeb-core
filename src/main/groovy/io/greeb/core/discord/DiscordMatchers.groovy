@@ -11,6 +11,12 @@ public class DiscordMatchers {
     return { true }
   }
 
+  public static Closure<Boolean> not(Closure<Boolean> closure) {
+    return { MessageReceivedEvent event ->
+      !closure(event)
+    }
+  }
+
   public static Closure<Boolean> messageMatches(String pattern) {
     Pattern compiled = ~pattern
     return { MessageReceivedEvent event ->
