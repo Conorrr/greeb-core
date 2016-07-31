@@ -11,8 +11,8 @@ class MessageReceivedEventContext extends EventContext<MessageReceivedEvent> {
   final IMessage message
   final String content
 
-  MessageReceivedEventContext(MessageReceivedEvent event, EventDispatcher eventDispatcher) {
-    super(event, eventDispatcher)
+  MessageReceivedEventContext(MessageReceivedEvent event, EventDispatcher eventDispatcher, Map properties) {
+    super(event, eventDispatcher, properties)
     this.message = event.message
     this.user = message.author
     this.content = message.content

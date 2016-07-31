@@ -5,9 +5,7 @@ import sx.blah.discord.handle.impl.events.MessageReceivedEvent
 import sx.blah.discord.handle.obj.IChannel
 import sx.blah.discord.handle.obj.IMessage
 
-import static io.greeb.core.discord.DiscordMatchers.channelMatches
-import static io.greeb.core.discord.DiscordMatchers.combine
-import static io.greeb.core.discord.DiscordMatchers.messageMatches
+import static io.greeb.core.discord.DiscordMatchers.*
 
 class DiscordMatchersTest extends Specification {
 

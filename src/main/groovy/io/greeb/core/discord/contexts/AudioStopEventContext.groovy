@@ -5,7 +5,7 @@ import io.greeb.core.discord.EventDispatcher
 import sx.blah.discord.handle.impl.events.AudioStopEvent
 
 class AudioStopEventContext extends EventContext<AudioStopEvent> {
-  AudioStopEventContext(AudioStopEvent event, EventDispatcher eventDispatcher) {
-    super(event, eventDispatcher)
+  AudioStopEventContext(AudioStopEvent event, EventDispatcher eventDispatcher, Map properties) {
+    super(event, eventDispatcher, properties)
   }
 }

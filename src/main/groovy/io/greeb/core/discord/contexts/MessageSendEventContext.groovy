@@ -11,8 +11,8 @@ class MessageSendEventContext extends EventContext<MessageSendEvent> {
   final IMessage message
   final String content
 
-  MessageSendEventContext(MessageSendEvent event, EventDispatcher eventDispatcher) {
-    super(event, eventDispatcher)
+  MessageSendEventContext(MessageSendEvent event, EventDispatcher eventDispatcher, Map properties) {
+    super(event, eventDispatcher, properties)
     this.message = event.message
     this.user = message.author
     this.content = message.content

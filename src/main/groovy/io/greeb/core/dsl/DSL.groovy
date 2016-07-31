@@ -1,7 +1,6 @@
 package io.greeb.core.dsl
 
 import io.greeb.core.Greeb
-import io.greeb.core.discord.EventDispatcher
 import io.greeb.core.discord.EventRegister
 
 public abstract class DSL {
@@ -10,11 +9,11 @@ public abstract class DSL {
     // shouldn't be publicly creatable
   }
 
-  public static void greeb(@DelegatesTo(GreebSpec) Closure<?> closure) {
+  public static void greeb(@DelegatesTo(value = GreebSpec, strategy = Closure.DELEGATE_FIRST) Closure<?> closure) {
     GreebSpec greebSpec = new GreebSpec()
 
     def script = closure.rehydrate(greebSpec, this, this)
-    script.resolveStrategy = Closure.OWNER_FIRST
+    script.resolveStrategy = Closure.DELEGATE_FIRST
     script()
 
     startServer(greebSpec)
@@ -29,7 +28,7 @@ public abstract class DSL {
 
     String secret
     Map properties = [:]
-    Closure appStart = {/*do nothing*/}
+    Closure appStart = {/*do nothing*/ }
     EventRegister eventRegister = new EventRegister()
     BindingSpec bindingSpec = new BindingSpec()
 
@@ -41,9 +40,9 @@ public abstract class DSL {
       properties += PropertyLoader.loadFile(path)
     }
 
-    public void bindings(@DelegatesTo(BindingSpec) Closure closure) {
+    public void bindings(@DelegatesTo(value = BindingSpec, strategy = Closure.DELEGATE_FIRST) Closure closure) {
       def script = closure.rehydrate(bindingSpec, this, this)
-      script.resolveStrategy = Closure.OWNER_FIRST
+      script.resolveStrategy = Closure.DELEGATE_FIRST
       script()
     }
 
@@ -51,10 +50,10 @@ public abstract class DSL {
       this.appStart = closure
     }
 
-    public void consumers(@DelegatesTo(ConsumerSpec) Closure closure) {
+    public void consumers(@DelegatesTo(value = ConsumerSpec, strategy = Closure.DELEGATE_FIRST) Closure closure) {
       ConsumerSpec consumerSpec = new ConsumerSpec(eventRegister)
       def script = closure.rehydrate(consumerSpec, this, this)
-      script.resolveStrategy = Closure.OWNER_FIRST
+      script.resolveStrategy = Closure.DELEGATE_FIRST
       script()
     }
 

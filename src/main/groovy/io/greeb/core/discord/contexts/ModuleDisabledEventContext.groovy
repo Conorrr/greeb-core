@@ -5,7 +5,7 @@ import io.greeb.core.discord.EventDispatcher
 import sx.blah.discord.handle.impl.events.ModuleDisabledEvent
 
 class ModuleDisabledEventContext extends EventContext<ModuleDisabledEvent> {
-  ModuleDisabledEventContext(ModuleDisabledEvent event, EventDispatcher eventDispatcher) {
-    super(event, eventDispatcher)
+  ModuleDisabledEventContext(ModuleDisabledEvent event, EventDispatcher eventDispatcher, Map properties) {
+    super(event, eventDispatcher, properties)
   }
 }

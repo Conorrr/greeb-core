@@ -11,8 +11,8 @@ class MessageDeleteEventContext extends EventContext<MessageDeleteEvent> {
   final IMessage message
   final String content
 
-  MessageDeleteEventContext(MessageDeleteEvent event, EventDispatcher eventDispatcher) {
-    super(event, eventDispatcher)
+  MessageDeleteEventContext(MessageDeleteEvent event, EventDispatcher eventDispatcher, Map properties) {
+    super(event, eventDispatcher, properties)
     this.message = event.message
     this.user = message.author
     this.content = message.content

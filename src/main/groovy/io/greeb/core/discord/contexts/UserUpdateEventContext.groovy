@@ -5,7 +5,7 @@ import io.greeb.core.discord.EventDispatcher
 import sx.blah.discord.handle.impl.events.UserUpdateEvent
 
 class UserUpdateEventContext extends EventContext<UserUpdateEvent> {
-  UserUpdateEventContext(UserUpdateEvent event, EventDispatcher eventDispatcher) {
-    super(event, eventDispatcher)
+  UserUpdateEventContext(UserUpdateEvent event, EventDispatcher eventDispatcher, Map properties) {
+    super(event, eventDispatcher, properties)
   }
 }

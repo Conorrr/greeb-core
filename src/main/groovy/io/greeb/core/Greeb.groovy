@@ -23,7 +23,7 @@ public class Greeb {
 
     spec.appStart(getInjectedParams(spec.appStart))
 
-    EventDispatcher eventDispatcher = new EventDispatcher(spec.eventRegister.registered, guiceInjector)
+    EventDispatcher eventDispatcher = new EventDispatcher(spec.eventRegister.registered, guiceInjector, spec.properties)
 
     connect(spec.secret, eventDispatcher)
   }

@@ -14,10 +14,13 @@ class EventContext<T extends Event> {
 
   final IDiscordClient client
 
-  public EventContext(T event, EventDispatcher eventDispatcher) {
+  final Map properties
+
+  public EventContext(T event, EventDispatcher eventDispatcher, Map properties) {
     this.event = event
     this.client = event.client
     this.eventDispatcher = eventDispatcher
+    this.properties = properties
   }
 
   public <T extends Event> void unregister(Class<T> event, T matchesEvent) {

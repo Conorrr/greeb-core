@@ -5,7 +5,7 @@ import io.greeb.core.discord.EventDispatcher
 import sx.blah.discord.handle.impl.events.GuildUpdateEvent
 
 class GuildUpdateEventContext extends EventContext<GuildUpdateEvent> {
-  GuildUpdateEventContext(GuildUpdateEvent event, EventDispatcher eventDispatcher) {
-    super(event, eventDispatcher)
+  GuildUpdateEventContext(GuildUpdateEvent event, EventDispatcher eventDispatcher, Map properties) {
+    super(event, eventDispatcher, properties)
   }
 }

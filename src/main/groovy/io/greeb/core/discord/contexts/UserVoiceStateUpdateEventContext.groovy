@@ -5,7 +5,7 @@ import io.greeb.core.discord.EventDispatcher
 import sx.blah.discord.handle.impl.events.UserVoiceStateUpdateEvent
 
 class UserVoiceStateUpdateEventContext extends EventContext<UserVoiceStateUpdateEvent> {
-  UserVoiceStateUpdateEventContext(UserVoiceStateUpdateEvent event, EventDispatcher eventDispatcher) {
-    super(event, eventDispatcher)
+  UserVoiceStateUpdateEventContext(UserVoiceStateUpdateEvent event, EventDispatcher eventDispatcher, Map properties) {
+    super(event, eventDispatcher, properties)
   }
 }

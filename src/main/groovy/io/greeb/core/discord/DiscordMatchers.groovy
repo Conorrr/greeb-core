@@ -1,6 +1,5 @@
 package io.greeb.core.discord
 
-import io.greeb.core.discord.Mapping
 import sx.blah.discord.api.Event
 import sx.blah.discord.handle.impl.events.MessageReceivedEvent
 

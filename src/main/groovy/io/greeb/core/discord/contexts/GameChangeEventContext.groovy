@@ -5,7 +5,7 @@ import io.greeb.core.discord.EventDispatcher
 import sx.blah.discord.handle.impl.events.GameChangeEvent
 
 class GameChangeEventContext extends EventContext<GameChangeEvent> {
-  GameChangeEventContext(GameChangeEvent event, EventDispatcher eventDispatcher) {
-    super(event, eventDispatcher)
+  GameChangeEventContext(GameChangeEvent event, EventDispatcher eventDispatcher, Map properties) {
+    super(event, eventDispatcher, properties)
   }
 }

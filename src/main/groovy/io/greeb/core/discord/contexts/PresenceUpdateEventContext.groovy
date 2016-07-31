@@ -5,7 +5,7 @@ import io.greeb.core.discord.EventDispatcher
 import sx.blah.discord.handle.impl.events.PresenceUpdateEvent
 
 class PresenceUpdateEventContext extends EventContext<PresenceUpdateEvent> {
-  PresenceUpdateEventContext(PresenceUpdateEvent event, EventDispatcher eventDispatcher) {
-    super(event, eventDispatcher)
+  PresenceUpdateEventContext(PresenceUpdateEvent event, EventDispatcher eventDispatcher, Map properties) {
+    super(event, eventDispatcher, properties)
   }
 }

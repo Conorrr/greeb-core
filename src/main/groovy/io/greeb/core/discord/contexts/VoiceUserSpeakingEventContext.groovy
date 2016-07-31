@@ -5,7 +5,7 @@ import io.greeb.core.discord.EventDispatcher
 import sx.blah.discord.handle.impl.events.VoiceUserSpeakingEvent
 
 class VoiceUserSpeakingEventContext extends EventContext<VoiceUserSpeakingEvent> {
-  VoiceUserSpeakingEventContext(VoiceUserSpeakingEvent event, EventDispatcher eventDispatcher) {
-    super(event, eventDispatcher)
+  VoiceUserSpeakingEventContext(VoiceUserSpeakingEvent event, EventDispatcher eventDispatcher, Map properties) {
+    super(event, eventDispatcher, properties)
   }
 }

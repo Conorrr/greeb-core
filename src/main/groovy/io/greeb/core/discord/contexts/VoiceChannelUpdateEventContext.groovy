@@ -5,7 +5,7 @@ import io.greeb.core.discord.EventDispatcher
 import sx.blah.discord.handle.impl.events.VoiceChannelUpdateEvent
 
 class VoiceChannelUpdateEventContext extends EventContext<VoiceChannelUpdateEvent> {
-  VoiceChannelUpdateEventContext(VoiceChannelUpdateEvent event, EventDispatcher eventDispatcher) {
-    super(event, eventDispatcher)
+  VoiceChannelUpdateEventContext(VoiceChannelUpdateEvent event, EventDispatcher eventDispatcher, Map properties) {
+    super(event, eventDispatcher, properties)
   }
 }

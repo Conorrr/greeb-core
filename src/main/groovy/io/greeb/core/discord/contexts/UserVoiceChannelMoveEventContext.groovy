@@ -5,7 +5,7 @@ import io.greeb.core.discord.EventDispatcher
 import sx.blah.discord.handle.impl.events.UserVoiceChannelMoveEvent
 
 class UserVoiceChannelMoveEventContext extends EventContext<UserVoiceChannelMoveEvent> {
-  UserVoiceChannelMoveEventContext(UserVoiceChannelMoveEvent event, EventDispatcher eventDispatcher) {
-    super(event, eventDispatcher)
+  UserVoiceChannelMoveEventContext(UserVoiceChannelMoveEvent event, EventDispatcher eventDispatcher, Map properties) {
+    super(event, eventDispatcher, properties)
   }
 }

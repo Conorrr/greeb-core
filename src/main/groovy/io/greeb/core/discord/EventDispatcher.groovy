@@ -5,9 +5,6 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import sx.blah.discord.api.Event
 import sx.blah.discord.api.IListener
-import sx.blah.discord.handle.impl.events.AudioPlayEvent
-import sx.blah.discord.handle.impl.events.MessageReceivedEvent
-import sx.blah.discord.handle.obj.IMessage
 
 class EventDispatcher implements IListener<Event> {
 
@@ -15,10 +12,12 @@ class EventDispatcher implements IListener<Event> {
 
   final List<Mapping> registered
   final Injector injector
+  final Map properties
 
-  public EventDispatcher(List<Mapping> registered, Injector injector) {
+  public EventDispatcher(List<Mapping> registered, Injector injector, Map properties) {
     this.registered = registered
     this.injector = injector
+    this.properties = properties
   }
 
   @Override
@@ -34,14 +33,14 @@ class EventDispatcher implements IListener<Event> {
     String className = "io.greeb.core.discord.contexts.${event.getClass().simpleName}Context"
 
     // todo load all classes ahead of time and use them here
-    (EventContext) this.class.classLoader.loadClass(className).newInstance(event, this)
+    (EventContext) this.class.classLoader.loadClass(className).newInstance(event, this, properties)
   }
 
   private dispatch(Event event, Closure closure) {
     EventContext context = prepareContext(event)
 
     def script = closure.rehydrate(context, this, this)
-    script.resolveStrategy = Closure.OWNER_FIRST
+    script.resolveStrategy = Closure.DELEGATE_FIRST
     // todo add some dependancy injection
     script(*getInjectedParams(closure))
   }

@@ -11,8 +11,8 @@ class MessageUpdateEventContext extends EventContext<MessageUpdateEvent> {
   final IMessage message
   final String content
 
-  MessageUpdateEventContext(MessageUpdateEvent event, EventDispatcher eventDispatcher) {
-    super(event, eventDispatcher)
+  MessageUpdateEventContext(MessageUpdateEvent event, EventDispatcher eventDispatcher, Map properties) {
+    super(event, eventDispatcher, properties)
     this.message = event.message
     this.user = message.author
     this.content = message.content

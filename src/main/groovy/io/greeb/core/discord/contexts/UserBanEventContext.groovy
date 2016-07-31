@@ -5,7 +5,7 @@ import io.greeb.core.discord.EventDispatcher
 import sx.blah.discord.handle.impl.events.UserBanEvent
 
 class UserBanEventContext extends EventContext<UserBanEvent> {
-  UserBanEventContext(UserBanEvent event, EventDispatcher eventDispatcher) {
-    super(event, eventDispatcher)
+  UserBanEventContext(UserBanEvent event, EventDispatcher eventDispatcher, Map properties) {
+    super(event, eventDispatcher, properties)
   }
 }
