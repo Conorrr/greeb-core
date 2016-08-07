@@ -1,7 +1,7 @@
 package io.greeb.core.dsl
 
 import io.greeb.core.discord.EventRegister
-import sx.blah.discord.api.Event
+import sx.blah.discord.api.events.Event
 
 class ConsumerChainer {
 

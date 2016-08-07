@@ -2,7 +2,7 @@ package io.greeb.core.discord
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import sx.blah.discord.api.Event
+import sx.blah.discord.api.events.Event
 class EventRegister {
 
   private final static Logger LOGGER = LoggerFactory.getLogger(EventRegister.class)

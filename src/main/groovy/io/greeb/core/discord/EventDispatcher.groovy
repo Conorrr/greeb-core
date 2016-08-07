@@ -3,8 +3,8 @@ package io.greeb.core.discord
 import com.google.inject.Injector
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import sx.blah.discord.api.Event
-import sx.blah.discord.api.IListener
+import sx.blah.discord.api.events.Event
+import sx.blah.discord.api.events.IListener
 
 class EventDispatcher implements IListener<Event> {
 
