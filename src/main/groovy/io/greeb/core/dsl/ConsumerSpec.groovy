@@ -42,41 +42,6 @@ public class ConsumerSpec {
   }
 
   // specific event matchers
-  public Closure audioPlayaudioPlay(
-          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.AudioPlayEvent"]) Closure<Boolean> filter,
-          @DelegatesTo(value = AudioPlayEventContext, strategy = Closure.DELEGATE_FIRST) Closure eventClosure) {
-    eventRegister.register(AudioPlayEvent, eventClosure, filter)
-    eventClosure
-  }
-
-  public Closure audioQueued(
-          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.AudioQueuedEvent"]) Closure<Boolean> filter,
-          @DelegatesTo(value = AudioQueuedEventContext, strategy = Closure.DELEGATE_FIRST) Closure eventClosure) {
-    eventRegister.register(AudioQueuedEvent, eventClosure, filter)
-    eventClosure
-  }
-
-  public Closure audioReceive(
-          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.AudioReceiveEvent"]) Closure<Boolean> filter,
-          @DelegatesTo(value = AudioReceiveEventContext, strategy = Closure.DELEGATE_FIRST) Closure eventClosure) {
-    eventRegister.register(AudioReceiveEvent, eventClosure, filter)
-    eventClosure
-  }
-
-  public Closure audioStop(
-          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.AudioStopEvent"]) Closure<Boolean> filter,
-          @DelegatesTo(value = AudioStopEventContext, strategy = Closure.DELEGATE_FIRST) Closure eventClosure) {
-    eventRegister.register(AudioStopEvent, eventClosure, filter)
-    eventClosure
-  }
-
-  public Closure audioUnqueued(
-          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.AudioUnqueuedEvent"]) Closure<Boolean> filter,
-          @DelegatesTo(value = AudioUnqueuedEventContext, strategy = Closure.DELEGATE_FIRST) Closure eventClosure) {
-    eventRegister.register(AudioUnqueuedEvent, eventClosure, filter)
-    eventClosure
-  }
-
   public Closure channelCreate(
           @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.ChannelCreateEvent"]) Closure<Boolean> filter,
           @DelegatesTo(value = ChannelCreateEventContext, strategy = Closure.DELEGATE_FIRST) Closure eventClosure) {
@@ -102,13 +67,6 @@ public class ConsumerSpec {
           @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.DiscordDisconnectedEvent"]) Closure<Boolean> filter,
           @DelegatesTo(value = DiscordDisconnectedEventContext, strategy = Closure.DELEGATE_FIRST) Closure eventClosure) {
     eventRegister.register(DiscordDisconnectedEvent, eventClosure, filter)
-    eventClosure
-  }
-
-  public Closure gameChange(
-          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.GameChangeEvent"]) Closure<Boolean> filter,
-          @DelegatesTo(value = GameChangeEventContext, strategy = Closure.DELEGATE_FIRST) Closure eventClosure) {
-    eventRegister.register(GameChangeEvent, eventClosure, filter)
     eventClosure
   }
 
@@ -308,13 +266,6 @@ public class ConsumerSpec {
     eventClosure
   }
 
-  public Closure userVoiceStateUpdate(
-          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.UserVoiceStateUpdateEvent"]) Closure<Boolean> filter,
-          @DelegatesTo(value = UserVoiceStateUpdateEventContext, strategy = Closure.DELEGATE_FIRST) Closure eventClosure) {
-    eventRegister.register(UserVoiceStateUpdateEvent, eventClosure, filter)
-    eventClosure
-  }
-
   public Closure voiceChannelCreate(
           @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.VoiceChannelCreateEvent"]) Closure<Boolean> filter,
           @DelegatesTo(value = VoiceChannelCreateEventContext, strategy = Closure.DELEGATE_FIRST) Closure eventClosure) {
@@ -358,31 +309,6 @@ public class ConsumerSpec {
   }
 
   // CHAIN METHODS
-  public ConsumerChainer audioPlay(
-          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.AudioPlayEvent"]) Closure<Boolean> filter) {
-    new ConsumerChainer(filter, eventRegister, AudioPlayEvent)
-  }
-
-  public ConsumerChainer audioQueued(
-          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.AudioQueuedEvent"]) Closure<Boolean> filter) {
-    new ConsumerChainer(filter, eventRegister, AudioQueuedEvent)
-  }
-
-  public ConsumerChainer audioReceive(
-          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.AudioReceiveEvent"]) Closure<Boolean> filter) {
-    new ConsumerChainer(filter, eventRegister, AudioReceiveEvent)
-  }
-
-  public ConsumerChainer audioStop(
-          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.AudioStopEvent"]) Closure<Boolean> filter) {
-    new ConsumerChainer(filter, eventRegister, AudioStopEvent)
-  }
-
-  public ConsumerChainer audioUnqueued(
-          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.AudioUnqueuedEvent"]) Closure<Boolean> filter) {
-    new ConsumerChainer(filter, eventRegister, AudioUnqueuedEvent)
-  }
-
   public ConsumerChainer channelCreate(
           @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.ChannelCreateEvent"]) Closure<Boolean> filter) {
     new ConsumerChainer(filter, eventRegister, ChannelCreateEvent)
@@ -401,11 +327,6 @@ public class ConsumerSpec {
   public ConsumerChainer discordDisconnected(
           @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.DiscordDisconnectedEvent"]) Closure<Boolean> filter) {
     new ConsumerChainer(filter, eventRegister, DiscordDisconnectedEvent)
-  }
-
-  public ConsumerChainer gameChange(
-          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.GameChangeEvent"]) Closure<Boolean> filter) {
-    new ConsumerChainer(filter, eventRegister, GameChangeEvent)
   }
 
   public ConsumerChainer guildCreate(
@@ -546,11 +467,6 @@ public class ConsumerSpec {
   public ConsumerChainer userVoiceChannelMove(
           @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.UserVoiceChannelMoveEvent"]) Closure<Boolean> filter) {
     new ConsumerChainer(filter, eventRegister, UserVoiceChannelMoveEvent)
-  }
-
-  public ConsumerChainer userVoiceStateUpdate(
-          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.UserVoiceStateUpdateEvent"]) Closure<Boolean> filter) {
-    new ConsumerChainer(filter, eventRegister, UserVoiceStateUpdateEvent)
   }
 
   public ConsumerChainer voiceChannelCreate(

@@ -25,7 +25,7 @@ artifacts {
 
 dependencies {
   compile 'org.codehaus.groovy:groovy-all:2.4.4'
-  compile 'com.github.austinv11:Discord4J:2.5.2'
+  compile 'com.github.austinv11:Discord4J:2.6.0'
   compile 'ch.qos.logback:logback-classic:1.1.7'
   compile 'com.google.inject:guice:4.1.0'
   compile 'ch.qos.logback:logback-classic:1.1.7'
