@@ -218,9 +218,9 @@ public class ConsumerSpec {
   }
 
   public Closure userLeave(
-          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.UserPardonEvent"]) Closure<Boolean> filter,
-          @DelegatesTo(value = UserPardonEventContext, strategy = Closure.DELEGATE_FIRST) Closure eventClosure) {
-    eventRegister.register(UserPardonEvent, eventClosure, filter)
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.UserLeaveEvent"]) Closure<Boolean> filter,
+          @DelegatesTo(value = UserLeaveEventContext, strategy = Closure.DELEGATE_FIRST) Closure eventClosure) {
+    eventRegister.register(UserLeaveEvent, eventClosure, filter)
     eventClosure
   }
 
