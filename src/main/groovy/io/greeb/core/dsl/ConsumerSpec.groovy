@@ -308,6 +308,20 @@ public class ConsumerSpec {
     eventClosure
   }
 
+  public Closure reactionAdd(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.ReactionAddEvent"]) Closure<Boolean> filter,
+          @DelegatesTo(value = ReactionAddEventContext, strategy = Closure.DELEGATE_FIRST) Closure eventClosure) {
+    eventRegister.register(ReactionAddEvent, eventClosure, filter)
+    eventClosure
+  }
+
+  public Closure reactionRemove(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.ReactionRemoveEvent"]) Closure<Boolean> filter,
+          @DelegatesTo(value = ReactionRemoveEventContext, strategy = Closure.DELEGATE_FIRST) Closure eventClosure) {
+    eventRegister.register(ReactionRemoveEvent, eventClosure, filter)
+    eventClosure
+  }
+
   // CHAIN METHODS
   public ConsumerChainer channelCreate(
           @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.ChannelCreateEvent"]) Closure<Boolean> filter) {
@@ -497,6 +511,16 @@ public class ConsumerSpec {
   public ConsumerChainer voiceUserSpeaking(
           @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.VoiceUserSpeakingEvent"]) Closure<Boolean> filter) {
     new ConsumerChainer(filter, eventRegister, VoiceUserSpeakingEvent)
+  }
+
+  public ConsumerChainer reactionAdd(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.ReactionAddEvent"]) Closure<Boolean> filter) {
+    new ConsumerChainer(filter, eventRegister, ReactionAddEvent)
+  }
+
+  public ConsumerChainer reactionRemove(
+          @ClosureParams(value = SimpleType, options = ["sx.blah.discord.handle.impl.events.ReactionRemoveEvent"]) Closure<Boolean> filter) {
+    new ConsumerChainer(filter, eventRegister, ReactionRemoveEvent)
   }
 
 }
