@@ -30,7 +30,8 @@ class EventContext<T extends Event> {
   public void unregister(String message) {
     MessageReceivedEvent mockEvent = new MessageReceivedEvent([getContent: { message },
                                                                getChannel: {
-                                                                 [isPrivate: { false },
+                                                                 [getID: { "" },
+                                                                  isPrivate: { false },
                                                                   getName  : { '' }] as IChannel
                                                                }
     ] as IMessage)
